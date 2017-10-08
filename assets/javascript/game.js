@@ -7,7 +7,7 @@ var wins = 0;  // holds total # of wins during this game
 var numOfGuesses = 0;  // holds number of guesses for this round
 var guessesAllowed = 15;  // holds total number of guesses allowed for each round
 var userInput = "";  // holds the letter the user typed
-var wordGuessStatus = "";  // holds the view of what the word looks like after each guess
+var wordGuessStatus = []; // "";  // holds the view of what the word looks like after each guess
 var lettersGuessed = [];  // holds the letters guessed already for each round
 
 // create array of possible words that user will have to guess
@@ -117,9 +117,9 @@ function displayNewWord(newWord) {
 
 	// for loop to display each letter of the word (does this need to be put into an array?)
 	for (var i = 0; i < wordLength; i++) {
-        wordGuessStatus = wordGuessStatus + "_ ";
+        wordGuessStatus[i] = "_";
     }
-    // console.log(wordGuessStatus);
+    console.log(wordGuessStatus);
 
 	// add blanks to web page in currentWordDisplay element
 	document.getElementById("currentWordDisplay").innerHTML = wordGuessStatus;
@@ -150,7 +150,23 @@ function isLetterRight(guessedLetter) {
 
 	// loop through current word and check to see if it matches the letter typed
 	for (var i = 0; i < currentWord.length; i++) {
+
 		console.log("currentWord checked " + i + " time");
+
+		if (currentWord.charAt(i) === guessedLetter) {
+
+			console.log("currentWord checked has the guessedLetter in it");
+			
+			// replace the blanks with the guessedLetter
+			wordGuessStatus[i] = guessedLetter;
+			
+			console.log("wordGuessStatus = " + wordGuessStatus);
+
+			// add blanks to web page in currentWordDisplay element
+			document.getElementById("currentWordDisplay").innerHTML = wordGuessStatus;
+			
+		}
+		
 		// check to see if charAt[i] equals guessedLetter
 		// if it does then add it to the display word view and return true
 
