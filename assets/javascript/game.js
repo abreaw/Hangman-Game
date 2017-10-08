@@ -74,9 +74,10 @@ document.onkeyup = function(event)
 		console.log("letter guessed right");
 
 		// if it does then update current word w/ new letter guessed
+		addRightLetterGuessed();
 		// check to see if word fully guessed (check letter added to current word increment? 
 		// or check to see if display word equals current word)
-				
+
 	}
 	else {
 
@@ -142,12 +143,27 @@ function addRightLetterGuessed(correctLetter) {
 // Not sure if this function is appropriate or not
 // is the letter guessed correct?
 // pass letter guessed by user
-// return true if letter is part of the current word
+// return true if letter is part of the current word ... return false if not part of current word
 function isLetterRight(guessedLetter) {
 
 	console.log("isLetterRight function called with guessedLetter = " + guessedLetter);
 
 	// loop through current word and check to see if it matches the letter typed
+	for (var i = 0; i < currentWord.length; i++) {
+		console.log("currentWord checked " + i + " time");
+		// check to see if charAt[i] equals guessedLetter
+		// if it does then add it to the display word view and return true
+
+		// if it doesn't then check to see if it has already been guessed ... isLetterGuessed(guessedLetter)
+		
+			// if is has already been guessed then display wrong letter message to user
+				// return false
+			
+			// if it hasn't already been guessed 
+				// add wrong letter to array
+				// display wrong letter array new word to screen
+				// return false
+	}
 
 	// return true or false if letter part of current word or not
 	return false;
