@@ -10,19 +10,67 @@ var lettersGuessed = [];  // holds the letters guessed already for each round
 var wordsAvailableToGuess = ["calendar", "blinds", "pictures", "drawing", "schedule", "friends", "buildings", "believe", "artwork", "holidays"];
 var currentWord = "";  // holds current word that user is guessing
 
+// create an object that sets up the possible user messages displayed during the game
+var userMessages = {
+    // types of messages w/ values
+    chooseLetter: "Please guess a letter.",
+    letterWrong: "Try again.",
+    duplicateLetter: "You already guessed that letter.  Check your letter's guessed and try again.",
+    almostThere: "Keep trying you are almost there!",
+    almostOutGuesses: "Oh no! You are almost out of guesses!",
+    youLost: "So sorry you didn't guess it right this time.",
+    youWon: "Yay! You won!",
 
+    // check to see if userMessages object methods working properly
+    displayAllMsgs: function() {
+    	console.log("userMessages loaded");
+    	console.log(this.chooseLetter);
+    	console.log(this.duplicateLetter);
+    	console.log(this.almostThere);
+    	console.log(this.almostOutGuesses);
+    	console.log(this.youLost);
+    	console.log(this.youWon);
+    },
+};
+
+// userMessages.displayAllMsgs();
 console.log("Global Variables Setup");
+
+
+// setup new game view ... ??might could put these into one function??
+// call function to select a new word
+currentWord = newWordSelector();
+console.log(currentWord);
+// call function to display blanks associated w/ new word selected
+displayNewWord(currentWord);
+// Tell the user to start guessing by typing a letter
+
+
+// grab the user input element
+userInput = document.getElementById("key-pressed");
+console.log(userInput);
+
+// code to execute when key pressed and released by user
+document.onkeyup = function(event) 
+{
+userInput.textContent = event.key;
+console.log(userInput.textContent);
+
+
+}
 
 
 // Setup functions needed to get game process going
 
-// select new word
+// select new word from wordsAvailableToGuess array
 function newWordSelector() {
 
 	console.log("newWordSelector function called");
 
-	// return new word value
-
+	// Randomly chooses a choice from the wordsAvailableToGuess array. This is the word the user
+	// is trying to guess.
+	// returns new word selected from the wordsAvailableToGuess array
+    return wordsAvailableToGuess[Math.floor(Math.random() * wordsAvailableToGuess.length)];
 }
 
 // display new word blanks on screen ... pass in new word from newWordSelector function
@@ -41,9 +89,9 @@ function updateWinCount() {
 
 // add the letter guessed to current word on screen (not sure if this function needed??)
 // pass in correctLetter as argument
-function addLetterGuessedCurrWord(correctLetter) {
+function addRightLetterGuessed(correctLetter) {
 
-	console.log("addLetterGuessedCurrWord function called with correctLetter = " + correctLetter);
+	console.log("addRightLetterGuessed function called with correctLetter = " + correctLetter);
 
 }
 
@@ -68,16 +116,6 @@ function writeMessageToUser(message) {
 	console.log("writeMessageToUser function called with message = " + message);
 
 }
-
-// Let's start by grabbing a reference to the <span> below.
-      var userInput = document.getElementById("user-text");
-      console.log(userInput);
-
-      // Next, we give JavaScript a function to execute when onkeyup event fires.
-      document.onkeyup = function(event) 
-      {
-        userInput.textContent = event.key;
-        console.log(userInput.textContent);
 
 
 
