@@ -1,9 +1,13 @@
 
+// -------------------------------------------------------------------------------
 // Setup Global Variables Need to keep wins, words, letters guessed, # of guesses
+// -------------------------------------------------------------------------------
+
 var wins = 0;  // holds total # of wins during this game
 var numOfGuesses = 0;  // holds number of guesses for this round
 var guessesAllowed = 15;  // holds total number of guesses allowed for each round
 var userInput = "";  // holds the letter the user typed
+var wordGuessStatus = "";  // holds the view of what the word looks like after each guess
 var lettersGuessed = [];  // holds the letters guessed already for each round
 
 // create array of possible words that user will have to guess
@@ -40,7 +44,7 @@ console.log("Global Variables Setup");
 // setup new game view ... ??might could put these into one function??
 // call function to select a new word
 currentWord = newWordSelector();
-console.log(currentWord);
+// console.log(currentWord);
 // call function to display blanks associated w/ new word selected
 displayNewWord(currentWord);
 // Tell the user to start guessing by typing a letter
@@ -50,17 +54,45 @@ displayNewWord(currentWord);
 userInput = document.getElementById("key-pressed");
 console.log(userInput);
 
+// ---------------------------------------------------
+// Setup functions needed to get game process going
+// ---------------------------------------------------
+
 // code to execute when key pressed and released by user
 document.onkeyup = function(event) 
 {
-userInput.textContent = event.key;
-console.log(userInput.textContent);
+	userInput.textContent = event.key;
+	console.log(userInput.textContent);
 
+	// ---------------------------------------------------
+	// need to put statements to check letter pressed for game flow
+	// ---------------------------------------------------
+
+	// check to see if the letter the user type is in the current word
+	if (isLetterRight(userInput.textContent)) {
+
+		console.log("letter guessed right");
+
+		// if it does then update current word w/ new letter guessed
+		// check to see if word fully guessed (check letter added to current word increment? 
+		// or check to see if display word equals current word)
+				
+	}
+	else {
+
+		console.log("letter guessed wrong");
+		if (isLetterGuessed(userInput.textContent)) {
+
+			console.log("letter already guessed");
+			// add letter to letters guessed wrong array
+			// decrement guesses counter
+		}
+		
+
+	}
 
 }
 
-
-// Setup functions needed to get game process going
 
 // select new word from wordsAvailableToGuess array
 function newWordSelector() {
@@ -77,7 +109,19 @@ function newWordSelector() {
 function displayNewWord(newWord) {
 
 	console.log("displayNewWord function called with newWord = " + newWord);
+	
+	// check length of string for newWord
+	var wordLength = newWord.length;
+	// console.log(wordLength);
 
+	// for loop to display each letter of the word (does this need to be put into an array?)
+	for (var i = 0; i < wordLength; i++) {
+        wordGuessStatus = wordGuessStatus + "_ ";
+    }
+    // console.log(wordGuessStatus);
+
+	// add blanks to web page in currentWordDisplay element
+	document.getElementById("currentWordDisplay").innerHTML = wordGuessStatus;
 }
 
 // update the win count variable
@@ -99,11 +143,25 @@ function addRightLetterGuessed(correctLetter) {
 // is the letter guessed correct?
 // pass letter guessed by user
 // return true if letter is part of the current word
-function checkLetterGuessed(guessedLetter) {
+function isLetterRight(guessedLetter) {
 
-	console.log("checkLetterGuessed function called with guessedLetter = " + guessedLetter);
+	console.log("isLetterRight function called with guessedLetter = " + guessedLetter);
+
+	// loop through current word and check to see if it matches the letter typed
 
 	// return true or false if letter part of current word or not
+	return false;
+}
+
+// isLetterGuessed function ... checks to see if letter has already been guessed by the user
+// returns true is it has or false if it hasn't yet
+function isLetterGuessed(guessedLetter) {
+
+	console.log("isLetterGuessed function called with guessedLetter = " + guessedLetter);
+
+	// return true or false if letter has already been guessed
+	return true;
+
 }
 
 // use this to write a new message to the user
