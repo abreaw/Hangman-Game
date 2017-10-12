@@ -1,0 +1,64 @@
+
+
+#hangmanPicView {
+
+	position: relative;
+	margin: auto;
+	margin-top: 5%;
+	background: none;
+	border: solid 3px black;
+	/*width: 50%;*/
+	/*height: 70%;*/
+	width: 350px;
+	height: 500px;
+	background-color: white;
+}
+
+.hanger {
+	
+	width: 30%;
+	height: 80%;
+	margin: auto;
+	margin-top: 2%;
+	border: solid 10px black;
+	position: absolute;
+	bottom: 5%;
+	right: 35%;
+
+}
+
+#postTopLine {
+
+	position: absolute;
+	bottom: 0px;
+	left: -10px;
+	margin: 0px;
+	border: solid 10px white;
+	height: 85%;
+}
+
+#postBottomLine {
+
+	width: 100%;
+	height: 30%;
+	position: absolute;
+	bottom: -10px;
+	left: 100%;
+	border-top: none;
+	border-right: none;
+
+}
+
+.bodyBox {
+
+	background-color: white;
+	position: absolute;
+	left: -80%;
+	bottom: 0px;
+	margin: 0px;
+	border: solid 2px black;
+	width: 150%;
+	height: 90%;
+
+
+}

@@ -5,7 +5,7 @@
 
 	<!-- link reset & style css files to this page -->
 	<!-- <link rel="stylesheet" type="text/css" href="assets/reset.css"> -->
-	<!-- <link rel="stylesheet" type="text/css" href="assets/style.css"> -->
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
 	<!-- if using bootstrap ... link bootstrap CDN -->
 	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
@@ -24,6 +24,9 @@
 		<!-- area for wins here -->
 		<div id="winView">Wins: <span id="winNum">0</span></div>
 		
+		<!-- area for losses here -->
+		<div id="lossView">Losses: <span id="lossNum">0</span></div>
+
 		<!-- area for current word to guess goes here -->
 		<div id="currentWordView"><span id="currentWordDisplay">Current Word Here</span></div>
 
@@ -35,7 +38,25 @@
 
 		<!-- area for drawing the hangman here -->
 		<div id="hangmanPicView">
-			Not sure this will happen but put it here in case I have time to add images here
+			Trying to draw the hangman view as the wrong guesses are made here
+			
+			<!-- area to draw the hanging post -->
+			<div class="hanger">
+				
+				<div class="hanger" id="postTopLine"></div>
+				<div class="hanger" id="postBottomLine"></div>
+
+				
+				<div class="bodyBox">
+					<!-- area to draw the head -->
+					<div id="head">
+
+						
+					</div>
+				</div>
+
+			</div>
+
 		</div>
 
 		<h2 id="userMessage">

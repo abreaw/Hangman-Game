@@ -3,8 +3,9 @@
 // Setup Global Variables Need to keep wins, words, letters guessed, # of guesses
 // -------------------------------------------------------------------------------
 
+var validKeys = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 var wins = 0;  // holds total # of wins during this game
-var loses = 0; // holds total # of loses during this game
+var losses = 0; // holds total # of loses during this game
 var numOfGuesses = 0;  // holds number of guesses for this round
 var guessesAllowed = 15;  // holds total number of guesses allowed for each round
 var lettersLeft; // holds the number associated w/ the number of letters the user has left to guess
@@ -13,7 +14,7 @@ var wordGuessStatus = []; // "";  // holds the view of what the word looks like 
 var lettersGuessed = [];  // holds the letters guessed already for each round
 
 // create array of possible words that user will have to guess
-var wordsAvailableToGuess = ["calendar", "blinds", "pictures", "drawing", "schedule", "friends", "buildings", "believe", "artwork", "holidays", "donuts", "ceiling", "caffine", "scissors", "suburban"];
+var wordsAvailableToGuess = ["calendar", "blinds", "pictures", "drawing", "schedule", "friends", "buildings", "believe", "artwork", "holidays", "donuts", "ceiling", "caffine", "scissors", "suburban", "ribbons"];
 var currentWord = "";  // holds current word that user is guessing
 
 // create an object that sets up the possible user messages displayed during the game
@@ -70,7 +71,7 @@ document.onkeyup = function(event)
 	// ---------------------------------------------------
 
 	// check to see if user still has guesses left to play with
-	if (guessesAllowed > 0) {
+	// if (guessesAllowed > 0) {
 
 		// check to see if the letter the user type is in the current word
 		if (isLetterRight(userInput.textContent)) {
@@ -96,20 +97,27 @@ document.onkeyup = function(event)
 			// }
 
 		}
-	}
-	else {
+	// }
+	// else {
 
-		// user out of guesses
-		// display you lost message ... userMessages.youLost
-		writeMessageToUser(userMessages.youLost);
+	// 	// user out of guesses
+	// 	userLostGame();
 
-		// setup a new word to let the user play again
-		resetGame();
+		
 
-	}
+	// }
 
 }
 
+// check to make sure the user entered a valid key to guess
+function isKeyValid(keyPressed) {
+
+	// loop through validKeys array to check if key valid
+	for (var i = 0; i < validKeys.length; i++) {
+		
+		// validKeys[i]
+	}
+}
 
 // select new word from wordsAvailableToGuess array
 function newWordSelector() {
@@ -334,10 +342,18 @@ function wrongLetterCheck(guessedLetter) {
 		// decrement the # of guesses left
 		guessesAllowed--;
 
-		// display new guess count
-		document.getElementById("guessesLeftDisplay").innerHTML = guessesAllowed;
+		
 
-		isLetterGuessed = true;
+			// display new guess count
+			document.getElementById("guessesLeftDisplay").innerHTML = guessesAllowed;
+
+			isLetterGuessed = true;
+
+		// }
+		// else {
+
+
+		// }
 
 	}
 	else
@@ -383,6 +399,13 @@ function wrongLetterCheck(guessedLetter) {
 	// add blanks to web page in lettersGuessedDisplay element
 	document.getElementById("lettersGuessedDisplay").innerHTML = lettersGuessed;
 
+	if (guessesAllowed === 0) {
+
+		// user out of guesses and game should reset and process loss
+		userLostGame();
+	}
+
+
 	// return true or false if letter has already been guessed
 	return true;
 
@@ -419,16 +442,23 @@ function resetGame(newGame) {
 		// reset lettersGuessed array
 		lettersGuessed = [];
 		console.log(lettersGuessed);
+
 		// reset web page view for lettersGuessedDisplay element
 		document.getElementById("lettersGuessedDisplay").innerHTML = lettersGuessed;
+
+		// reset web page view for key-pressed element
+		document.getElementById("key-pressed").innerHTML = "";
 
 		// check if this is a new game or just a round reset
 		if (newGame) {
 
-				// reset win counter to 0
+				// reset win/loss counters to 0
 				wins = 0;
-				// add new win count to web page view
+				losses = 0;
+
+				// add new win / loss count to web page view
 				document.getElementById("winNum").innerHTML = wins;
+				document.getElementById("lossNum").innerHTML = losses;
 		}
 
 }
@@ -451,6 +481,25 @@ function userWonGame() {
 
 }
 
+
+// user lost process
+function userLostGame() {
+
+	console.log("userLostGame function executing");
+
+	// display you lost message ... userMessages.youLost
+	writeMessageToUser(userMessages.youLost);
+
+	// increment loss counter
+	losses++;
+
+	// add new loss count to web page view
+	document.getElementById("lossNum").innerHTML = losses;
+
+	// setup a new word to let the user play again
+	resetGame(false);
+
+}
 
 
 
