@@ -21,6 +21,7 @@ var currentWord = "";  // holds current word that user is guessing
 var userMessages = {
     // types of messages w/ values
     chooseLetter: "Please guess a letter.",
+    wrongInput: "Please use letters only as guesses.",
     letterWrong: "Try again.",
     letterRight: "Good Job!",
     duplicateLetterWrong: "You already guessed that letter.  Check your letter's guessed and try again.",
@@ -64,17 +65,20 @@ console.log(userInput);
 document.onkeyup = function(event) 
 {
 	userInput.textContent = event.key;
-	console.log(userInput.textContent);
+
+	// make key entered lowercase (will this error out if something besides a letter pressed?)
+	var lowercaseInput = userInput.textContent.toLowerCase();
+	// console.log(lowercaseInput);
 
 	// ---------------------------------------------------
 	// need to put statements to check letter pressed for game flow
 	// ---------------------------------------------------
 
-	// check to see if user still has guesses left to play with
-	// if (guessesAllowed > 0) {
+	// check to see if user entered valid Key
+	if (isKeyValid(lowercaseInput)) {
 
 		// check to see if the letter the user type is in the current word
-		if (isLetterRight(userInput.textContent)) {
+		if (isLetterRight(lowercaseInput)) {
 
 			console.log("letter guessed right");
 
@@ -88,35 +92,39 @@ document.onkeyup = function(event)
 
 			console.log("letter guessed wrong");
 
-			wrongLetterCheck(userInput.textContent);
-			// if (wrongLetterCheck(userInput.textContent)) {
-
+			wrongLetterCheck(lowercaseInput);
+			// if (wrongLetterCheck(lowercaseInput
 			// 	console.log("letter already guessed");
 			// 	// add letter to letters guessed wrong array
 			// 	// decrement guesses counter
 			// }
 
 		}
-	// }
-	// else {
+	}
+	else {
 
-	// 	// user out of guesses
-	// 	userLostGame();
-
+		// tell user that they can only use letters for guesses
+		writeMessageToUser(userMessages.wrongInput);
 		
-
-	// }
+	}
 
 }
 
 // check to make sure the user entered a valid key to guess
 function isKeyValid(keyPressed) {
 
+	var keyValid = false;
+
 	// loop through validKeys array to check if key valid
 	for (var i = 0; i < validKeys.length; i++) {
 		
-		// validKeys[i]
+		// check to see if key entered is equal to any of the letters in the array
+		if (validKeys[i] === keyPressed) {
+			keyValid = true;
+		}
 	}
+
+	return keyValid;
 }
 
 // select new word from wordsAvailableToGuess array

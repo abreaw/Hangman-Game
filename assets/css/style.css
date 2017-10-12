@@ -1,5 +1,12 @@
 
 
+#userMessage {
+
+	/*margin: auto;*/
+	text-align: center;
+	font-size: 2em;
+}
+
 #hangmanPicView {
 
 	position: relative;
@@ -49,16 +56,163 @@
 
 }
 
+.bodyBoxStyles {
+
+	border-color: teal;
+	border-width: 5px;
+	border-style: solid;
+	background-color: black;
+	position: absolute;
+}
+
 .bodyBox {
 
+	
 	background-color: white;
 	position: absolute;
 	left: -80%;
 	bottom: 0px;
 	margin: 0px;
-	border: solid 2px black;
+	border: none;
 	width: 150%;
 	height: 90%;
+	/*visibility: hidden;*/
 
+}
+
+#head {
+	border-radius: 50%;
+	border-width: 10px;
+	width: 60%;
+	height: 20%;
+	top: 0px;
+	left: 12%;
+	background-color: white;
+
+}
+
+#body {
+	height: 50%;
+	top: 24%;
+	left: 43%;
+
+}
+
+.legs {
+	
+	height: 20%;
+	top: 74%;
+
+}
+
+#rightLeg {
+
+	/* Rotate div */
+    -ms-transform: rotate(150deg); /* IE 9 */
+    -webkit-transform: rotate(150deg); /* Chrome, Safari, Opera */
+    transform: rotate(150deg);
+    left: 55%;
+
+}
+
+#leftLeg {
+
+	/* Rotate div */
+    -ms-transform: rotate(30deg); /* IE 9 */
+    -webkit-transform: rotate(30deg); /* Chrome, Safari, Opera */
+    transform: rotate(30deg);
+    left: 30%;
+}
+
+.feet {
+	width: 10%;
+	top: 94%;
+
+}
+
+#rightFoot {
+	left: 67%;
+	
+}
+
+#leftFoot {
+	left: 8.5%;
+}
+
+.arms {
+	
+	width: 20%;
+	top: 40%;
+
+}
+
+#rightArm {
+	
+	left: 48%;
+
+}
+
+#leftArm {
+	
+	left: 18%;
+
+}
+
+.hands {
+	
+	width: 5%;
+	top: 39%;
+
+}
+
+#rightHand {
+
+	/* Rotate div */
+    -ms-transform: rotate(150deg); /* IE 9 */
+    -webkit-transform: rotate(150deg); /* Chrome, Safari, Opera */
+    transform: rotate(150deg);
+    left: 70%;
+
+}
+
+#leftHand {
+	/* Rotate div */
+    -ms-transform: rotate(30deg); /* IE 9 */
+    -webkit-transform: rotate(30deg); /* Chrome, Safari, Opera */
+    transform: rotate(30deg);
+    left: 10%;
+}
+
+.eyes {
+
+	width: 5%;
+	height: 10%;
+	border-radius: 50%;
+	top: 20%;
+}
+
+#rightEye {
+	left: 60%;
+}
+
+#leftEye {
+	left: 25%;
+}
+
+#nose {
+	left: 43%;
+	top: 45%;
+	height: 0%;
+}
+
+#mouth {
+	
+	width: 25%;
+	height: 15%;
+	border-radius: 50%;
+	border-bottom: none;
+	top: 70%;
+	left: 33%;
+	background-color: white;
 
 }
