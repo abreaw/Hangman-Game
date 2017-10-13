@@ -14,8 +14,6 @@
 	margin-top: 5%;
 	background: none;
 	border: solid 3px black;
-	/*width: 50%;*/
-	/*height: 70%;*/
 	width: 350px;
 	height: 500px;
 	background-color: white;
@@ -61,8 +59,9 @@
 	border-color: teal;
 	border-width: 5px;
 	border-style: solid;
-	background-color: black;
+	background-color: teal;
 	position: absolute;
+	visibility: hidden;
 }
 
 .bodyBox {
@@ -76,7 +75,6 @@
 	border: none;
 	width: 150%;
 	height: 90%;
-	/*visibility: hidden;*/
 
 }
 

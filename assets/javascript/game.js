@@ -13,8 +13,12 @@ var userInput = "";  // holds the letter the user typed
 var wordGuessStatus = []; // "";  // holds the view of what the word looks like after each guess
 var lettersGuessed = [];  // holds the letters guessed already for each round
 
+// create array of divs and counter for the hangman drawing to be drawn piece by piece
+var hangmanCounter = 0;
+var hangmanDivNamesArray = ["head", "body", "rightLeg", "rightFoot", "leftLeg", "leftFoot", "rightArm", "rightHand", "leftArm", "leftHand", "rightEye", "leftEye", "nose", "mouth"];
+
 // create array of possible words that user will have to guess
-var wordsAvailableToGuess = ["calendar", "blinds", "pictures", "drawing", "schedule", "friends", "buildings", "believe", "artwork", "holidays", "donuts", "ceiling", "caffine", "scissors", "suburban", "ribbons"];
+var wordsAvailableToGuess = ["hat", "pop", "quit"]; //["calendar", "blinds", "pictures", "drawing", "schedule", "friends", "buildings", "believe", "artwork", "holidays", "donuts", "ceiling", "caffine", "scissors", "suburban", "ribbons"];
 var currentWord = "";  // holds current word that user is guessing
 
 // create an object that sets up the possible user messages displayed during the game
@@ -93,6 +97,18 @@ document.onkeyup = function(event)
 			console.log("letter guessed wrong");
 
 			wrongLetterCheck(lowercaseInput);
+
+			// if (!wrongLetterCheck(lowercaseInput)) {
+
+				// // -----------------------------------------------------------------------------
+				// // show a piece of the hangman arrary here and increase index counter (if the letter hasn't already been guessed)
+				// // -----------------------------------------------------------------------------
+
+				// var hangmanPiece = document.getElementById(hangmanDivNamesArray[hangmanCounter]);
+				// hangmanPiece.style.visibility = "visible";
+				// hangmanCounter++;
+			// }
+
 			// if (wrongLetterCheck(lowercaseInput
 			// 	console.log("letter already guessed");
 			// 	// add letter to letters guessed wrong array
@@ -338,8 +354,30 @@ function wrongLetterCheck(guessedLetter) {
 
 	console.log("wrongLetterCheck function called with guessedLetter = " + guessedLetter);
 
-	// check to see if anything already in lettersGuessed array
-	if (lettersGuessed.length === 0) {
+	// loop through lettersGuessed array
+	for (var i = 0; i < lettersGuessed.length; i++) {
+
+		console.log("wrongLetterCheck for loop called lettersGuessed length = " + lettersGuessed.length);
+                
+        console.log("wrongLetterCheck for loop called " + i + " times.");
+        // check to see if the guessed letter has already been guessed
+		if (lettersGuessed[i] === guessedLetter) {
+
+			// if it has already been guessed display user message
+			writeMessageToUser(userMessages.duplicateLetterWrong);
+
+			isLetterGuessed = true;
+
+		}
+
+    }
+
+
+    // check to see if anything already in lettersGuessed array
+	// if (lettersGuessed.length === 0) {
+
+	// check to see if letter was guessed already or not
+	if (!isLetterGuessed) {
 
 		// if it hasn't been guessed already add it to the wrong letters array
 		lettersGuessed.push(guessedLetter);
@@ -350,72 +388,43 @@ function wrongLetterCheck(guessedLetter) {
 		// decrement the # of guesses left
 		guessesAllowed--;
 
-		
+		console.log("guessesAllowed = " + guessesAllowed);
+
+		// check to see if user has used up all the guesses already
+		if (guessesAllowed === 0) {
+
+			console.log("user lost now");
+
+			// user out of guesses and game should reset and process loss
+			userLostGame();
+		}
+		else {
 
 			// display new guess count
 			document.getElementById("guessesLeftDisplay").innerHTML = guessesAllowed;
 
-			isLetterGuessed = true;
 
-		// }
-		// else {
+		    console.log(lettersGuessed);
 
+			// add blanks to web page in lettersGuessedDisplay element
+			document.getElementById("lettersGuessedDisplay").innerHTML = lettersGuessed;
 
-		// }
+			// isLetterGuessed = true;
+
+			// -----------------------------------------------------------------------------
+			// show a piece of the hangman arrary here and increase index counter (if the letter hasn't already been guessed)
+			// -----------------------------------------------------------------------------
+			console.log("hangmanCounter = " + hangmanCounter);
+
+			var hangmanPiece = document.getElementById(hangmanDivNamesArray[hangmanCounter]);
+
+			console.log("hangmanPiece = " + hangmanPiece);
+			hangmanPiece.style.visibility = "visible";
+			hangmanCounter++;
+
+		}
 
 	}
-	else
-	{
-		// loop through lettersGuessed array
-		for (var i = 0; i < lettersGuessed.length; i++) {
-
-			console.log("wrongLetterCheck for loop called lettersGuessed length = " + lettersGuessed.length);
-	                
-	        console.log("wrongLetterCheck for loop called " + i + " times.");
-	        // check to see if the guessed letter has already been guessed
-			if (lettersGuessed[i] === guessedLetter) {
-
-				// if it has already been guessed display user message
-				writeMessageToUser(userMessages.duplicateLetterWrong);
-
-				isLetterGuessed = true;
-
-			}
-
-	    }
-
-	    if (!isLetterGuessed) {
-
-	    	// if it hasn't been guessed already add it to the wrong letters array
-			lettersGuessed.push(guessedLetter);
-
-			// Tell the user they got it wrong
-			writeMessageToUser(userMessages.letterWrong);
-
-			// decrement the # of guesses left
-			guessesAllowed--;
-
-			// display new guess count
-			document.getElementById("guessesLeftDisplay").innerHTML = guessesAllowed;
-
-	    }
-		
-	}
-
-    console.log(lettersGuessed);
-
-	// add blanks to web page in lettersGuessedDisplay element
-	document.getElementById("lettersGuessedDisplay").innerHTML = lettersGuessed;
-
-	if (guessesAllowed === 0) {
-
-		// user out of guesses and game should reset and process loss
-		userLostGame();
-	}
-
-
-	// return true or false if letter has already been guessed
-	return true;
 
 }
 
@@ -456,6 +465,17 @@ function resetGame(newGame) {
 
 		// reset web page view for key-pressed element
 		document.getElementById("key-pressed").innerHTML = "";
+
+		// -----------------------------------------------------------------------------
+		// reset hangman arrary & counter here ... for loop needed to set all attributes to hidden
+		// -----------------------------------------------------------------------------
+		hangmanCounter = 0;
+
+		for (var i = 0; i < hangmanDivNamesArray.length; i++) {
+			var resetHangmanPieces = document.getElementById(hangmanDivNamesArray[i]);
+			resetHangmanPieces.style.visibility = "hidden";
+			console.log("Hangman Pieces reset = " + resetHangmanPieces)
+		}
 
 		// check if this is a new game or just a round reset
 		if (newGame) {
