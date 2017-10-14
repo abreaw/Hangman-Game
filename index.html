@@ -8,74 +8,91 @@
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
 	<!-- if using bootstrap ... link bootstrap CDN -->
-	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
 </head>
 <body>
 	
-	<h1>Let's Play Hangman!</h1>
-	
-	<!-- area for instructions -->
-	<div id="instructions">Press a letter to guess the word ... <span id="key-pressed"></span></div>
+	<div class="container">
 
-	<!-- area for game info -->
-	<div id="container">
+		 <div class="jumbotron">
+		    <h1>Let's Play Hangman!</h1> 
+		    <!-- area for instructions  & key press grab -->
+		    <div id="instructions">Press a letter to guess the word ... <span id="key-pressed"></span></div> 
+		    <h2 id="userMessage">
+						Display user messages here
+			</h2>
+
+		 </div>
 		
-		<!-- area for wins here -->
-		<div id="winView">Wins: <span id="winNum">0</span></div>
 		
-		<!-- area for losses here -->
-		<div id="lossView">Losses: <span id="lossNum">0</span></div>
+		<!-- area for game info ... might need to take this out -->
+		<div id="container">
 
-		<!-- area for current word to guess goes here -->
-		<div id="currentWordView"><span id="currentWordDisplay">Current Word Here</span></div>
+			<div class="row">
 
-		<!-- area for guesses left goes here -->
-		<div id="guessesLeft">Remaining Guesses: <span id="guessesLeftDisplay"></span></div>
+				<div class="col-md-4 col-sm-4">		
+					<!-- area for wins here -->
+					<div id="winView">Wins: <span id="winNum">0</span></div>
+					
+					<!-- area for losses here -->
+					<div id="lossView">Losses: <span id="lossNum">0</span></div>
 
-		<!-- area for letters guessed here -->
-		<div id="lettersGuessedView"><span id="lettersGuessedDisplay">Put letters Guessed here</span></div>
+					<!-- area for current word to guess goes here -->
+					<div id="currentWordView"><span id="currentWordDisplay">Current Word Here</span></div>
 
-		<h2 id="userMessage">
-			Display user messages here
-		</h2>
+					<!-- area for guesses left goes here -->
+					<div id="guessesLeft">Remaining Guesses: <span id="guessesLeftDisplay"></span></div>
 
-		<!-- area for drawing the hangman here -->
-		<div id="hangmanPicView">
-			Trying to draw the hangman view as the wrong guesses are made here
-			
-			<!-- area to draw the hanging post -->
-			<div class="hanger">
+					<!-- area for letters guessed here -->
+					<div id="lettersGuessedView"><span id="lettersGuessedDisplay">Put letters Guessed here</span></div>
+
+					
 				
-				<!-- hangman post drawing -->
-				<div class="hanger" id="postTopLine"></div>
-				<div class="hanger" id="postBottomLine"></div>
-
-				<!-- area to draw the hangman picture -->
-				<div class="bodyBox">
-					<div class="bodyBoxStyles" id="head">
-						<div class="bodyBoxStyles eyes" id="rightEye"></div>
-						<div class="bodyBoxStyles eyes" id="leftEye"></div>
-						<div class="bodyBoxStyles eyes" id="nose"></div>
-						<div class="bodyBoxStyles" id="mouth"></div>
-					</div>
-					<div class="bodyBoxStyles" id="body"></div>
-					<div class="bodyBoxStyles legs" id="rightLeg"></div>
-					<div class="bodyBoxStyles feet" id="rightFoot"></div>
-					<div class="bodyBoxStyles legs" id="leftLeg"></div>
-					<div class="bodyBoxStyles feet" id="leftFoot"></div>
-					<div class="bodyBoxStyles arms" id="rightArm"></div>
-					<div class="bodyBoxStyles hands" id="rightHand"></div>
-					<div class="bodyBoxStyles arms" id="leftArm"></div>
-					<div class="bodyBoxStyles hands" id="leftHand"></div>
-
 				</div>
+
+				<div class="col-md-8 col-sm-8">
+
+					<!-- area for drawing the hangman here -->
+					<div id="hangmanPicView">
+						Trying to draw the hangman view as the wrong guesses are made here
+						
+						<!-- area to draw the hanging post -->
+						<div class="hanger">
+							
+							<!-- hangman post drawing -->
+							<div class="hanger" id="postTopLine"></div>
+							<div class="hanger" id="postBottomLine"></div>
+
+							<!-- area to draw the hangman picture -->
+							<div class="bodyBox">
+								<div class="bodyBoxStyles" id="head">
+									<div class="bodyBoxStyles eyes" id="rightEye"></div>
+									<div class="bodyBoxStyles eyes" id="leftEye"></div>
+									<div class="bodyBoxStyles eyes" id="nose"></div>
+									<div class="bodyBoxStyles" id="mouth"></div>
+								</div>
+								<div class="bodyBoxStyles" id="body"></div>
+								<div class="bodyBoxStyles legs" id="rightLeg"></div>
+								<div class="bodyBoxStyles feet" id="rightFoot"></div>
+								<div class="bodyBoxStyles legs" id="leftLeg"></div>
+								<div class="bodyBoxStyles feet" id="leftFoot"></div>
+								<div class="bodyBoxStyles arms" id="rightArm"></div>
+								<div class="bodyBoxStyles hands" id="rightHand"></div>
+								<div class="bodyBoxStyles arms" id="leftArm"></div>
+								<div class="bodyBoxStyles hands" id="leftHand"></div>
+
+							</div>
+
+						</div>
+
+					</div>
+
+				</div>	
 
 			</div>
 
 		</div>
-
-		
 
 	</div>
 
