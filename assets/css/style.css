@@ -21,6 +21,7 @@
 #lettersGuessedView, #currentWordView {
 
 	border: solid 2px SkyBlue;
+	border-bottom: solid 5px SkyBlue;
 	font-weight: bolder;
 	text-align: center;
 	font-size: 1.5em;
