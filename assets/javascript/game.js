@@ -138,7 +138,8 @@ function displayNewWord(newWord) {
     }
     
 	// add blanks to web page in currentWordDisplay element
-	document.getElementById("currentWordDisplay").innerHTML = wordGuessStatus;
+	document.getElementById("currentWordDisplay").innerHTML = wordGuessStatus.join(" ");
+	
 }
 
 // ---------------------------------------------------
@@ -188,7 +189,7 @@ function isLetterRight(guessedLetter) {
 				wordGuessStatus[i] = guessedLetter;
 				
 				// show new letter placement to user in web page using currentWordDisplay element
-				document.getElementById("currentWordDisplay").innerHTML = wordGuessStatus;
+				document.getElementById("currentWordDisplay").innerHTML = wordGuessStatus.join(" ");
 
 				// check to see if there are any letters left for the user to guess in the current word
 				if (lettersLeft === 0) {
