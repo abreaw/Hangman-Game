@@ -18,7 +18,7 @@ var hangmanCounter = 0;
 var hangmanDivNamesArray = ["head", "body", "rightLeg", "rightFoot", "leftLeg", "leftFoot", "rightArm", "rightHand", "leftArm", "leftHand", "rightEye", "leftEye", "nose", "mouth"];
 
 // create array of possible words that user will have to guess
-var wordsAvailableToGuess = ["hat", "pop", "quit"]; //["calendar", "blinds", "pictures", "drawing", "schedule", "friends", "buildings", "believe", "artwork", "holidays", "donuts", "ceiling", "caffine", "scissors", "suburban", "ribbons"];
+var wordsAvailableToGuess = ["calendar", "blinds", "pictures", "drawing", "schedule", "friends", "buildings", "believe", "artwork", "holidays", "donuts", "ceiling", "caffine", "scissors", "suburban", "ribbons"];
 var currentWord = "";  // holds current word that user is guessing
 
 // create an object that sets up the possible user messages displayed during the game

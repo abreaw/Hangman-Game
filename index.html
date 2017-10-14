@@ -15,8 +15,8 @@
 	
 	<div class="container">
 
-		 <div class="jumbotron">
-		    <h1>Let's Play Hangman!</h1> 
+		 <div class="jumbotron page-header">
+		    <h1 id="hangman" class="text-center">Let's Play Hangman!</h1> 
 		    <!-- area for instructions  & key press grab -->
 		    <div id="instructions">Press a letter to guess the word ... <span id="key-pressed"></span></div> 
 		    <h2 id="userMessage">
@@ -32,22 +32,22 @@
 			<div class="row">
 
 				<div class="col-md-4 col-sm-4">		
-					<!-- area for wins here -->
-					<div id="winView">Wins: <span id="winNum">0</span></div>
-					
-					<!-- area for losses here -->
-					<div id="lossView">Losses: <span id="lossNum">0</span></div>
 
-					<!-- area for current word to guess goes here -->
-					<div id="currentWordView"><span id="currentWordDisplay">Current Word Here</span></div>
+					<div class="panel panel-info center-block game-stats">
+						<div class="panel-heading">Game Stats</div>
+						<!-- area for wins here -->
+						<div class="panel-body" id="winView">Wins: <span id="winNum">0</span></div>
+						
+						<!-- area for losses here -->
+						<div class="panel-body" id="lossView">Losses: <span id="lossNum">0</span></div>
 
-					<!-- area for guesses left goes here -->
-					<div id="guessesLeft">Remaining Guesses: <span id="guessesLeftDisplay"></span></div>
+						<!-- area for guesses left goes here -->
+						<div class="panel-body" id="guessesLeft">Remaining Guesses: <span id="guessesLeftDisplay"></span></div>
 
-					<!-- area for letters guessed here -->
-					<div id="lettersGuessedView"><span id="lettersGuessedDisplay">Put letters Guessed here</span></div>
+						<!-- area for letters guessed here -->
+						<div class="panel-body" id="lettersGuessedView"><span id="lettersGuessedDisplay">Put letters Guessed here</span></div>
 
-					
+					</div>
 				
 				</div>
 
@@ -55,7 +55,9 @@
 
 					<!-- area for drawing the hangman here -->
 					<div id="hangmanPicView">
-						Trying to draw the hangman view as the wrong guesses are made here
+						
+						<!-- area for current word to guess goes here -->
+						<div id="currentWordView"><span id="currentWordDisplay">Current Word Here</span></div>
 						
 						<!-- area to draw the hanging post -->
 						<div class="hanger">

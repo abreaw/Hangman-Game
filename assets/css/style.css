@@ -10,13 +10,27 @@
 	/*margin: auto;*/
 	text-align: center;
 	font-size: 2em;
+	color: DeepSkyBlue;
+}
+
+.game-stats {
+
+	font-size: 1.5em;
+}
+
+#lettersGuessedView, #currentWordView {
+
+	border: solid 2px SkyBlue;
+	font-weight: bolder;
+	text-align: center;
+	font-size: 1.5em;
 }
 
 #hangmanPicView {
 
 	position: relative;
 	margin: auto;
-	margin-top: 5%;
+	/*margin-top: 5%;*/
 	background: none;
 	border: solid 3px black;
 	width: 350px;
@@ -61,10 +75,10 @@
 
 .bodyBoxStyles {
 
-	border-color: teal;
+	border-color: DeepSkyBlue;
 	border-width: 5px;
 	border-style: solid;
-	background-color: teal;
+	background-color: DeepSkyBlue;
 	position: absolute;
 	visibility: hidden;
 }
